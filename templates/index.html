@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>TParser - torrents from anywhere</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="stylesheet" href="static/css/styles.scss">
+    <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+    <!-- Custom styles for this template -->
+</head>
+<body>
+<section class="mainContent">
+     <div class="formContainer">
+        <form method="POST">
+            {% csrf_token %}
+      <fieldset class="fieldInput">
+        <input class="form-input" placeholder="Please Enter Text" type="text" name="search">
+        <button type="submit" value="search" class="form-submit">Enter</button>
+      </fieldset>
+    </form>
+  </div>
+            <!--<div class="wrapper">
+                <input class="input" placeholder="Please Enter Text" type="text" name="search" >
+             <span class="underline"></span>
+                <button type="submit" name="submit" value="search" class="button-5">Search</button>
+            </div>
+
+             <input type="text" name="search" required>-->
+     </div>
+</section>
+<section>
+  <!--for demo wrap-->
+  <h1>TORRENT PARSER</h1>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>Дата</th>
+          <th>Наименование</th>
+          <th>Ссылка на страницу трекера</th>
+          <th>Ссылка на скачивание</th>
+          <th>Magnet</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+        <tbody>
+            {% for tor in torrents %}
+                <tr><td>{{ tor.date }}</td><td>{{ tor.title }}</td><td>{{ tor.linkToSitePage }}</td><td><a href={{ tor.link }}><img src="static/images/download.gif" width="30"
+  height="30"></a></td><td><a href={{ tor.magnet }}><img src="static/images/magnet.png" width="30"
+  height="30"></a></td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  </div>
+</section>
+<!-- follow me template -->
+<div class="made-with-love">
+  Made with
+  <i>♥</i> by
+  <a target="_blank" href="https://codepen.io/nikhil8krishnan">Nikhil Krishnan(frontend)</a>
+    and
+    <a target="_blank" href="https://github.com/brutalya">brutal_ya(backend)</a>
+</div>
+</body>
+</html>
